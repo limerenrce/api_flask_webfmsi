@@ -19,12 +19,12 @@
 							"formdata": [
 								{
 									"key": "username",
-									"value": "John doe",
+									"value": "jean_doe",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "ZJohnPassword!",
+									"value": "ZJeanPassword!",
 									"type": "text"
 								}
 							]
@@ -54,12 +54,12 @@
 							"formdata": [
 								{
 									"key": "username",
-									"value": "John doe",
+									"value": "jean_doe",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "ZJohnPassword!",
+									"value": "ZJeanPassword!",
 									"type": "text"
 								}
 							]
