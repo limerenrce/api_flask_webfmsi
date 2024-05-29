@@ -43,33 +43,6 @@ INSERT INTO `tb_books` VALUES (1,'Harry potter edit','update description updated
 UNLOCK TABLES;
 
 --
--- Table structure for table `tb_products`
---
-
-DROP TABLE IF EXISTS `tb_products`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tb_products` (
-  `id_products` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(225) DEFAULT NULL,
-  `description` tinytext,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id_products`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_products`
---
-
-LOCK TABLES `tb_products` WRITE;
-/*!40000 ALTER TABLE `tb_products` DISABLE KEYS */;
-INSERT INTO `tb_products` VALUES (1,'Harry Potter Order of The Phoenix',NULL,'2024-04-02 04:32:11','2024-04-02 04:32:11'),(2,'Romeo and Juliet',NULL,'2024-04-02 04:33:01','2024-04-02 04:33:01'),(3,'House of Flame and Shadow',NULL,'2024-04-02 04:33:54','2024-04-02 04:33:54'),(4,'Fourth Wing',NULL,'2024-04-02 04:34:13','2024-04-02 04:34:13'),(5,'Iron Flame',NULL,'2024-04-02 04:34:29','2024-04-02 04:34:29'),(6,'It Ends with us',NULL,'2024-04-02 04:36:52','2024-04-02 04:36:52'),(7,'Bride',NULL,'2024-04-02 04:36:52','2024-04-02 04:36:52'),(8,'Harry Potter Philosopher\'s Stone',NULL,'2024-04-02 04:36:52','2024-04-02 04:36:52'),(9,'Harry Potter Chamber of Secrets ',NULL,'2024-04-02 04:36:52','2024-04-02 04:36:52'),(10,'Harry Potter Prisoner of Azkaban',NULL,'2024-04-02 04:36:52','2024-04-02 04:36:52'),(11,'Harry Potter Goblet of File',NULL,'2024-04-02 04:36:52','2024-04-02 04:36:52'),(12,'Harry Potter Half Blood Prince',NULL,'2024-04-02 04:36:52','2024-04-02 04:36:52'),(13,'Harry Potter Deathly Hallows',NULL,'2024-04-02 04:36:52','2024-04-02 04:36:52');
-/*!40000 ALTER TABLE `tb_products` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `users`
 --
 
@@ -83,8 +56,9 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id_users`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id_users`),
+  UNIQUE KEY `users_pk` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +67,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John doe','$2b$12$EiuDIjuaSNPpn1kcqoEH9.vZdbk6LkfyjpYah0gW6Mn.k/VhjSvze','2024-05-29 06:04:16','2024-05-29 06:04:16',NULL);
+INSERT INTO `users` VALUES (1,'john_doe','$2b$12$6bzZ3QZjTsMQ2xYmFijOKeGmu5JjeV5sb6LHkFOIOWObWL8dQy70S','2024-05-29 07:35:50','2024-05-29 07:35:50',NULL),(2,'jean_doe','$2b$12$Ywex3fWuHj0H90BztX7DieUvd6VHYHtu5LD8hxabL35f5WmSq3zp.','2024-05-29 07:38:50','2024-05-29 07:38:50',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -106,4 +80,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-29 14:51:21
+-- Dump completed on 2024-05-29 18:02:12
