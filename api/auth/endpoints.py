@@ -25,13 +25,15 @@ def login():
     cursor.execute(query, request_query)
     user = cursor.fetchone()
     cursor.close()
-    if user and bcrypt.check_password_hash(user['password'], password):
-        access_token = create_access_token(identity={'username': username})
-        decoded_token = decode_token(access_token)
-        expires = decoded_token['exp']
-        return jsonify({"access_token": access_token, "expires_in": expires, "type": "Bearer"})
-    else:
+
+    if not user or not bcrypt.check_password_hash(user.get('password'), password):
         return jsonify({"msg": "Bad username or password"}), 401
+
+    access_token = create_access_token(
+        identity={'username': username}, additional_claims={'roles': "add_your_roles"})
+    decoded_token = decode_token(access_token)
+    expires = decoded_token['exp']
+    return jsonify({"access_token": access_token, "expires_in": expires, "type": "Bearer"})
 
 
 @auth_endpoints.route('/register', methods=['POST'])
