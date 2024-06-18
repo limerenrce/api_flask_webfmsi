@@ -6,6 +6,7 @@ Demonstrate how to create simple CRUD API with Flask, this repository dedicated 
 ## Features
 - Basic CRUD
 - Authetication and Authorization with JWT
+- Integrate with Firabase cloud messaging
 
 Please clone this project and make sure to follow all instruction below:
 
@@ -17,6 +18,7 @@ Please clone this project and make sure to follow all instruction below:
 - python-dotenv
 - mysql-connector-python
 - Flask-Cors
+- firebase-admin
 
 
 ## Preparation
@@ -45,6 +47,7 @@ cd api_flask
 - `pip install python-dotenv`
 - `pip install mysql-connector-python`
 - `pip install Flask-Cors`
+- `pip install firebase-admin`
 
 ## How to Run with Debugging Mode
 **Run this command in the root project directory **
