@@ -58,7 +58,7 @@ def update(product_id):
     return jsonify(data), 200
 
 
-@books_endpoints.route('/delete/<product_id>', methods=['GET'])
+@books_endpoints.route('/delete/<product_id>', methods=['DELETE'])
 def delete(product_id):
     """Routes for module to delete a book"""
     connection = get_connection()
