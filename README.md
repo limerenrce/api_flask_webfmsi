@@ -19,6 +19,7 @@ Please clone this project and make sure to follow all instruction below:
 - mysql-connector-python
 - Flask-Cors
 - firebase-admin
+- SQLAlchemy
 
 
 ## Preparation
@@ -31,13 +32,13 @@ Please clone this project and make sure to follow all instruction below:
 ## Installation
 ### Step 1: Clone the repository
 ```
-git clone https://github.com/firmangel8/api_flask.git
-cd api_flask
+git clone https://github.com/limerenrce/api_flask_webfmsi.git
+cd api_flask_webfmsi
 ```
 or clone with:
 ```
-git clone git@github.com:firmangel8/api_flask.git
-cd api_flask
+git clone git@github.com:limerenrce/api_flask_webfmsi.git
+cd api_flask_webfmsi
 ```
 
 ### Step 2: Installation package
@@ -48,6 +49,7 @@ cd api_flask
 - `pip install mysql-connector-python`
 - `pip install Flask-Cors`
 - `pip install firebase-admin`
+- `pip install SQLAlchemy`
 
 ## How to Run with Debugging Mode
 **Run this command in the root project directory **
