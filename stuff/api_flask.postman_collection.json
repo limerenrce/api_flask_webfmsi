@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "a6c05306-0924-462e-9b36-b9ed9b5e4970",
+		"_postman_id": "4685f2b6-99e0-4923-94fc-f034a0e29246",
 		"name": "api_flask",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "3140692"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33773261",
+		"_collection_link": "https://planetary-escape-602561.postman.co/workspace/webfmsi~0721b064-3b4c-4975-9809-8d16a4618299/collection/33773261-4685f2b6-99e0-4923-94fc-f034a0e29246?action=share&source=collection_link&creator=33773261"
 	},
 	"item": [
 		{
@@ -29,18 +30,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "{{flask_local}}/api/v1/auth/login",
-							"host": [
-								"{{flask_local}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"login"
-							]
-						}
+						"url": "{{flask_local}}/api/v1/auth/login"
 					},
 					"response": []
 				},
@@ -64,18 +54,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "{{flask_local}}/api/v1/auth/register",
-							"host": [
-								"{{flask_local}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"register"
-							]
-						}
+						"url": "{{flask_local}}/api/v1/auth/register"
 					},
 					"response": []
 				}
@@ -89,17 +68,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{flask_local}}/api/v1/protected",
-							"host": [
-								"{{flask_local}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"protected"
-							]
-						}
+						"url": "{{flask_local}}/api/v1/protected"
 					},
 					"response": []
 				}
@@ -111,26 +80,27 @@
 				{
 					"name": "/api/v1/books/read",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzQ0NTE0MywianRpIjoiYWEyYzQ2MGYtOWZlOC00NDM3LWIyZTUtMzdkMjQ5YjE1NjhlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImplYW5fZG9lIn0sIm5iZiI6MTczMzQ0NTE0MywiY3NyZiI6IjE5MGFhZGZhLWE2OWQtNDg5OC1iNmQ1LTI3ZmU0ZDc4MjIzZSIsImV4cCI6MTczMzQ0ODc0Mywicm9sZXMiOiJhZGRfeW91cl9yb2xlcyJ9.06JltCCtu4Jng26w7Dyx4sg3CJniL5e0XRpi1sUBMvw"
+							}
+						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{flask_local}}/api/v1/books/read",
-							"host": [
-								"{{flask_local}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"books",
-								"read"
-							]
-						}
+						"url": "{{flask_local}}/api/v1/books/read"
 					},
 					"response": []
 				},
 				{
 					"name": "/api/v1/books/create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzQ0NTE0MywianRpIjoiYWEyYzQ2MGYtOWZlOC00NDM3LWIyZTUtMzdkMjQ5YjE1NjhlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImplYW5fZG9lIn0sIm5iZiI6MTczMzQ0NTE0MywiY3NyZiI6IjE5MGFhZGZhLWE2OWQtNDg5OC1iNmQ1LTI3ZmU0ZDc4MjIzZSIsImV4cCI6MTczMzQ0ODc0Mywicm9sZXMiOiJhZGRfeW91cl9yb2xlcyJ9.06JltCCtu4Jng26w7Dyx4sg3CJniL5e0XRpi1sUBMvw"
+							}
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -138,33 +108,67 @@
 							"formdata": [
 								{
 									"key": "title",
-									"value": "test",
+									"value": "New Book",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "delete books",
+									"value": "It is a nice book tbh",
 									"type": "text"
 								}
 							]
 						},
-						"url": {
-							"raw": "{{flask_local}}/api/v1/books/create",
-							"host": [
-								"{{flask_local}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"books",
-								"create"
-							]
-						}
+						"url": "{{flask_local}}/api/v1/books/create"
 					},
 					"response": []
 				},
 				{
-					"name": "/api/v1/books/upload",
+					"name": "/api/v1/books/update/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzQ0NTE0MywianRpIjoiYWEyYzQ2MGYtOWZlOC00NDM3LWIyZTUtMzdkMjQ5YjE1NjhlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImplYW5fZG9lIn0sIm5iZiI6MTczMzQ0NTE0MywiY3NyZiI6IjE5MGFhZGZhLWE2OWQtNDg5OC1iNmQ1LTI3ZmU0ZDc4MjIzZSIsImV4cCI6MTczMzQ0ODc0Mywicm9sZXMiOiJhZGRfeW91cl9yb2xlcyJ9.06JltCCtu4Jng26w7Dyx4sg3CJniL5e0XRpi1sUBMvw"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "update title books updated",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "update description updated",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{flask_local}}/api/v1/books/update/35"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/books/delete/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzQ0NTE0MywianRpIjoiYWEyYzQ2MGYtOWZlOC00NDM3LWIyZTUtMzdkMjQ5YjE1NjhlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImplYW5fZG9lIn0sIm5iZiI6MTczMzQ0NTE0MywiY3NyZiI6IjE5MGFhZGZhLWE2OWQtNDg5OC1iNmQ1LTI3ZmU0ZDc4MjIzZSIsImV4cCI6MTczMzQ0ODc0Mywicm9sZXMiOiJhZGRfeW91cl9yb2xlcyJ9.06JltCCtu4Jng26w7Dyx4sg3CJniL5e0XRpi1sUBMvw"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{flask_local}}/api/v1/books/delete/35"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/books/upload:id",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -188,75 +192,102 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "{{flask_local}}/api/v1/books/upload",
-							"host": [
-								"{{flask_local}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"books",
-								"upload"
-							]
-						}
+						"url": "{{flask_local}}/api/v1/books/upload"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "authors",
+			"item": [
+				{
+					"name": "/api/v1/authors/read",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzQ0NTE0MywianRpIjoiYWEyYzQ2MGYtOWZlOC00NDM3LWIyZTUtMzdkMjQ5YjE1NjhlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImplYW5fZG9lIn0sIm5iZiI6MTczMzQ0NTE0MywiY3NyZiI6IjE5MGFhZGZhLWE2OWQtNDg5OC1iNmQ1LTI3ZmU0ZDc4MjIzZSIsImV4cCI6MTczMzQ0ODc0Mywicm9sZXMiOiJhZGRfeW91cl9yb2xlcyJ9.06JltCCtu4Jng26w7Dyx4sg3CJniL5e0XRpi1sUBMvw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{flask_local}}/api/v1/authors/read"
 					},
 					"response": []
 				},
 				{
-					"name": "/api/v1/books/update/:id",
+					"name": "/api/v1/authors/create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzQ0NTE0MywianRpIjoiYWEyYzQ2MGYtOWZlOC00NDM3LWIyZTUtMzdkMjQ5YjE1NjhlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImplYW5fZG9lIn0sIm5iZiI6MTczMzQ0NTE0MywiY3NyZiI6IjE5MGFhZGZhLWE2OWQtNDg5OC1iNmQ1LTI3ZmU0ZDc4MjIzZSIsImV4cCI6MTczMzQ0ODc0Mywicm9sZXMiOiJhZGRfeW91cl9yb2xlcyJ9.06JltCCtu4Jng26w7Dyx4sg3CJniL5e0XRpi1sUBMvw"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Meovv",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Banji",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{flask_local}}/api/v1/authors/create"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/v1/authors/update/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzQ0NTE0MywianRpIjoiYWEyYzQ2MGYtOWZlOC00NDM3LWIyZTUtMzdkMjQ5YjE1NjhlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImplYW5fZG9lIn0sIm5iZiI6MTczMzQ0NTE0MywiY3NyZiI6IjE5MGFhZGZhLWE2OWQtNDg5OC1iNmQ1LTI3ZmU0ZDc4MjIzZSIsImV4cCI6MTczMzQ0ODc0Mywicm9sZXMiOiJhZGRfeW91cl9yb2xlcyJ9.06JltCCtu4Jng26w7Dyx4sg3CJniL5e0XRpi1sUBMvw"
+							}
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "title",
-									"value": "update title books updated",
+									"key": "first_name",
+									"value": "Super",
 									"type": "text"
 								},
 								{
-									"key": "description",
-									"value": "update description updated",
+									"key": "last_name",
+									"value": "Malup",
 									"type": "text"
 								}
 							]
 						},
-						"url": {
-							"raw": "{{flask_local}}/api/v1/books/update/30",
-							"host": [
-								"{{flask_local}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"books",
-								"update",
-								"30"
-							]
-						}
+						"url": "{{flask_local}}/api/v1/authors/update/14"
 					},
 					"response": []
 				},
 				{
-					"name": "/api/v1/products/delete/:id",
+					"name": "/api/v1/authors/delete/:id",
 					"request": {
-						"method": "GET",
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMzQ0NTE0MywianRpIjoiYWEyYzQ2MGYtOWZlOC00NDM3LWIyZTUtMzdkMjQ5YjE1NjhlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImplYW5fZG9lIn0sIm5iZiI6MTczMzQ0NTE0MywiY3NyZiI6IjE5MGFhZGZhLWE2OWQtNDg5OC1iNmQ1LTI3ZmU0ZDc4MjIzZSIsImV4cCI6MTczMzQ0ODc0Mywicm9sZXMiOiJhZGRfeW91cl9yb2xlcyJ9.06JltCCtu4Jng26w7Dyx4sg3CJniL5e0XRpi1sUBMvw"
+							}
+						},
+						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{flask_local}}/api/v1/books/delete/30",
-							"host": [
-								"{{flask_local}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"books",
-								"delete",
-								"30"
-							]
-						}
+						"url": "{{flask_local}}/api/v1/authors/delete/15"
 					},
 					"response": []
 				}
