@@ -3,12 +3,15 @@ import os
 from flask import Blueprint, jsonify, request
 from helper.db_helper import get_connection
 from helper.form_validation import get_form_data
+from flask_jwt_extended import jwt_required, get_jwt_identity
+
 
 books_endpoints = Blueprint('books', __name__)
 UPLOAD_FOLDER = "img"
 
 
 @books_endpoints.route('/read', methods=['GET'])
+@jwt_required()
 def read():
     """Routes for module get list books"""
     connection = get_connection()
@@ -21,6 +24,7 @@ def read():
 
 
 @books_endpoints.route('/create', methods=['POST'])
+@jwt_required()
 def create():
     """Routes for module create a book"""
     required = get_form_data(["title"])  # use only if the field required
@@ -41,6 +45,7 @@ def create():
 
 
 @books_endpoints.route('/update/<product_id>', methods=['PUT'])
+@jwt_required()
 def update(product_id):
     """Routes for module update a book"""
     title = request.form['title']
@@ -52,6 +57,9 @@ def update(product_id):
     update_query = "UPDATE tb_books SET title=%s, description=%s WHERE id_books=%s"
     update_request = (title, description, product_id)
     cursor.execute(update_query, update_request)
+    if cursor.rowcount == 0:
+        return jsonify({"err_message": "Data not updated"}), 400
+    
     connection.commit()
     cursor.close()
     data = {"message": "updated", "id_books": product_id}
@@ -59,6 +67,7 @@ def update(product_id):
 
 
 @books_endpoints.route('/delete/<product_id>', methods=['DELETE'])
+@jwt_required()
 def delete(product_id):
     """Routes for module to delete a book"""
     connection = get_connection()
@@ -67,6 +76,9 @@ def delete(product_id):
     delete_query = "DELETE FROM tb_books WHERE id_books = %s"
     delete_id = (product_id,)
     cursor.execute(delete_query, delete_id)
+    if cursor.rowcount == 0:
+        return jsonify({"err_message": "Data not deleted"}), 400
+    
     connection.commit()
     cursor.close()
     data = {"message": "Data deleted", "id_books": product_id}

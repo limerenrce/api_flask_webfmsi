@@ -34,6 +34,7 @@ def read():
     return jsonify({"message": "OK", "datas": results}), 200
 
 @authors_endpoints.route('/create', methods=['POST'])
+@jwt_required()
 def create():
     """Routes for module create a author"""
     # Create a session
@@ -60,6 +61,7 @@ def create():
     # return jsonify({"message": "Cant Insert Data"}), 500
 
 @authors_endpoints.route('/update/<author_id>', methods=['PUT'])
+@jwt_required()
 def update(author_id):
     """Routes for module update a author"""
     first_name = request.form['first_name']
@@ -71,12 +73,16 @@ def update(author_id):
     update_query = "UPDATE tb_authors SET first_name=%s, last_name=%s WHERE author_id=%s"
     update_request = (first_name, last_name, author_id)
     cursor.execute(update_query, update_request)
+    if cursor.rowcount == 0:
+        return jsonify({"err_message": "Data not updated"}), 400
+
     connection.commit()
     cursor.close()
     data = {"message": "updated", "author_id": author_id}
     return jsonify(data), 200
 
 @authors_endpoints.route('/delete/<author_id>', methods=['DELETE'])
+@jwt_required()
 def delete(author_id):
     """Routes for module to delete a author"""
     connection = get_connection()
@@ -85,6 +91,9 @@ def delete(author_id):
     delete_query = "DELETE FROM tb_authors WHERE author_id = %s"
     delete_id = (author_id,)
     cursor.execute(delete_query, delete_id)
+    if cursor.rowcount == 0:
+        return jsonify({"err_message": "Data not deleted"}), 400
+    
     connection.commit()
     cursor.close()
     data = {"message": "Data deleted", "author_id": author_id}
